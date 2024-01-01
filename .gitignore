@@ -1,0 +1,17 @@
+# Go specific
+*.exe
+*.dll
+*.so
+*.dylib
+/main
+
+# Docker
+.DS_Store
+docker-compose.yml
+
+# Build
+/build/
+
+# Go modules
+/go.sum
+/go.mod

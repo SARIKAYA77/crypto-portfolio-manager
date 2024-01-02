@@ -4,6 +4,7 @@
 *.so
 *.dylib
 /main
+.env
 
 # Docker
 .DS_Store

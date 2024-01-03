@@ -104,5 +104,8 @@ func (h *CurrencyHandler) GetAllCurrenciesHandler(w http.ResponseWriter, r *http
 	}
 
 	w.WriteHeader(http.StatusOK)
-	json.NewEncoder(w).Encode(currencies)
+	err = json.NewEncoder(w).Encode(currencies)
+	if err != nil {
+		return
+	}
 }

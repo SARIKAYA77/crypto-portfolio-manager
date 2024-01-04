@@ -17,21 +17,18 @@ func loadEnv() {
 
 func InitDB() *sql.DB {
 	loadEnv()
-
 	dbName := os.Getenv("DB_NAME")
 	user := os.Getenv("DB_USER")
 	password := os.Getenv("DB_PASSWORD")
 	host := os.Getenv("DB_HOST")
 	port := os.Getenv("DB_PORT")
-
-	connectionString := "user=" + user + " password=" + password + " dbname=" + dbName + " host=" + host + " port=" + port + " sslmode=disable"
-
+	connectionString := "user=" + user + " password=" + password + " dbname=" + dbName + " host=" + host +
+		" port=" + port + " sslmode=disable"
 	db, err := sql.Open("postgres", connectionString)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	// Test the connection
 	err = db.Ping()
 	if err != nil {
 		log.Fatal(err)

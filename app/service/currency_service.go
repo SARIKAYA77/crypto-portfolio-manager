@@ -50,23 +50,16 @@ func (s *CurrencyService) AddCurrency(code string, amount float64) (*model.Curre
 func (s *CurrencyService) EditCurrency(id int, code string, amount float64) (*model.Currency, error) {
 	for _, c := range s.currencies {
 		if c.ID == id {
-			// Get the current price from CoinMarketCap
 			price, err := util.GetCryptoPrice(code)
 			if err != nil {
 				return nil, err
 			}
-
-			// Calculate the new total value
 			totalValue := price * amount
-
-			// Edit the currency
 			c.Code = code
 			c.Amount = amount
 			c.Price = price
 			c.TotalValue = totalValue
-
 			log.Printf("Edited currency with ID: %d, new code: %s, new amount: %f, new total value: %f", id, code, amount, totalValue)
-
 			return c, nil
 		}
 	}

@@ -83,7 +83,6 @@ func (s *CurrencyService) GetCurrencyByID(id int) (*model.Currency, error) {
 			return c, nil
 		}
 	}
-
 	return nil, errors.New("currency with that ID does not exist")
 }
 

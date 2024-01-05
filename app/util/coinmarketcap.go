@@ -19,10 +19,8 @@ func LoadEnv() {
 
 func GetCryptoPrice(cryptoCode string) (float64, error) {
 	LoadEnv()
-
 	apiURL := os.Getenv("COINMARKETCAP_API_URL")
 	apiKey := os.Getenv("COINMARKETCAP_API_KEY")
-
 	url := fmt.Sprintf("%s?symbol=%s&convert=USD&CMC_PRO_API_KEY=%s", apiURL, cryptoCode, apiKey)
 	resp, err := http.Get(url)
 	if err != nil {
@@ -34,7 +32,6 @@ func GetCryptoPrice(cryptoCode string) (float64, error) {
 			// Handle error
 		}
 	}(resp.Body)
-
 	if resp.StatusCode != http.StatusOK {
 		return 0, fmt.Errorf("CoinMarketCap API request failed with status code: %d", resp.StatusCode)
 	}

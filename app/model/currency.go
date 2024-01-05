@@ -8,7 +8,6 @@ type Currency struct {
 	TotalValue float64 `json:"totalValue"`
 	History    []Price `json:"history"`
 }
-
 type Price struct {
 	Amount float64 `json:"amount"`
 	Price  struct {

@@ -10,7 +10,7 @@ func InitRoutes(currencyService *service.CurrencyService) *mux.Router {
 
 	router := mux.NewRouter()
 
-	router.HandleFunc("/currency", handler.AddCurrencyHandler).Methods("POST")
+	router.HandleFunc("/currency", handler.AddCurrencyHandler).Methods("PUT")
 	router.HandleFunc("/currency/{id}", handler.GetCurrencyByIDHandler).Methods("GET")
 	router.HandleFunc("/currency/{id}", handler.EditCurrencyHandler).Methods("PUT")
 	router.HandleFunc("/currency/{id}", handler.DeleteCurrencyHandler).Methods("DELETE")

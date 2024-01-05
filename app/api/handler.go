@@ -5,6 +5,7 @@ import (
 	"crypto-portfolio/app/service"
 	"encoding/json"
 	"github.com/gorilla/mux"
+	"log"
 	"net/http"
 	"strconv"
 )
@@ -22,7 +23,7 @@ func (h *CurrencyHandler) AddCurrencyHandler(w http.ResponseWriter, r *http.Requ
 
 	err := json.NewDecoder(r.Body).Decode(&currency)
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusBadRequest)
+		log.Println("Error decoding request:", err)
 		return
 	}
 

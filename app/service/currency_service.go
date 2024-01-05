@@ -29,7 +29,6 @@ func (s *CurrencyService) AddCurrency(code string, amount float64) (*model.Curre
 	if err != nil {
 		return nil, err
 	}
-
 	totalValue := price * amount
 	newCurrency := &model.Currency{
 		ID:         len(s.currencies) + 1,
@@ -39,11 +38,8 @@ func (s *CurrencyService) AddCurrency(code string, amount float64) (*model.Curre
 		TotalValue: totalValue,
 		History:    []model.Price{},
 	}
-
 	s.currencies = append(s.currencies, newCurrency)
-
 	log.Printf("Added currency with code: %s, amount: %f, total value: %f", code, amount, totalValue)
-
 	return newCurrency, nil
 }
 

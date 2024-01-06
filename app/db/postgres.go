@@ -25,6 +25,7 @@ func InitDB() *sql.DB {
 	connectionString := "user=" + user + " password=" + password + " dbname=" + dbName + " host=" + host +
 		" port=" + port + " sslmode=disable"
 	db, err := sql.Open("postgres", connectionString)
+
 	if err != nil {
 		log.Fatal(err)
 	}

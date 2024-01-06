@@ -24,7 +24,6 @@ func (s *CurrencyService) AddCurrency(code string, amount float64) (*model.Curre
 			return nil, errors.New("currency already exists")
 		}
 	}
-
 	price, err := util.GetCryptoPrice(code)
 	if err != nil {
 		return nil, err

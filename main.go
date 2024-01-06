@@ -20,6 +20,5 @@ func main() {
 			log.Println(err)
 		}
 	}(dbCon)
-
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

@@ -21,8 +21,15 @@ func GetCryptoPrice(cryptoCode string) (float64, error) {
 	LoadEnv()
 	apiURL := os.Getenv("COINMARKETCAP_API_URL")
 	apiKey := os.Getenv("COINMARKETCAP_API_KEY")
-	url := fmt.Sprintf("%s?symbol=%s&convert=USD&CMC_PRO_API_KEY=%s", apiURL, cryptoCode, apiKey)
-	resp, err := http.Get(url)
+	url := fmt.Sprintf("%s/latest", apiURL)
+	req, err := http.NewRequest("GET", url, nil)
+	if err != nil {
+		return 0, err
+	}
+	req.Header.Set("X-CMC_PRO_API_KEY", apiKey)
+	req.Header.Set("Accept", "application/json")
+
+	resp, err := http.DefaultClient.Do(req)
 	if err != nil {
 		return 0, err
 	}

@@ -36,7 +36,6 @@ func GetCryptoPrice(cryptoCode string) (float64, error) {
 	defer func(Body io.ReadCloser) {
 		err := Body.Close()
 		if err != nil {
-			// Handle error
 		}
 	}(resp.Body)
 	if resp.StatusCode != http.StatusOK {

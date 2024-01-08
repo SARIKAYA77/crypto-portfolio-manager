@@ -66,9 +66,7 @@ func (s *CurrencyService) DeleteCurrency(id int) error {
 	for i, c := range s.currencies {
 		if c.ID == id {
 			s.currencies = append(s.currencies[:i], s.currencies[i+1:]...)
-
 			log.Printf("Deleted currency with ID: %d", id)
-
 			return nil
 		}
 	}
